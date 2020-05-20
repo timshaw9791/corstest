@@ -5,19 +5,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+
 @CrossOrigin(origins = "http://127.0.0.1:5500")
-@RestController("/" )
+@RestController("/")
 public class TestController {
 
-    
-    @RequestMapping(value="/data.json",method={RequestMethod.GET})
-    public Map<String,String> bookById(){
-    Map<String,String> resultMap=new HashMap<>();
-    resultMap.put("myname","刘笑锋1");
-    resultMap.put("mynumber","2012020045");
-    return resultMap;
-}
+    @RequestMapping(value = "/data.json")
+    public List bookById() {
+        List resultList=new ArrayList();
+        Map resultMap = new HashMap<>();
+        resultMap.put("name", "计算机安装与维护");
+        resultMap.put("credit", 2);
+        resultList.add(resultMap);
+
+
+        resultMap = new HashMap<>();
+        resultMap.put("name", "静态网页制作");
+        resultMap.put("credit", 2);
+        resultList.add(resultMap);
+
+        resultMap = new HashMap<>();
+        resultMap.put("name", "计算机编程基础");
+        resultMap.put("credit", 4);
+        resultList.add(resultMap);
+
+        resultMap = new HashMap<>();
+        resultMap.put("name", "大学英语");
+        resultMap.put("credit", 2);
+        resultList.add(resultMap);
+
+        return resultList;
+    }
+
+
+    @RequestMapping(value = "/creditByName", method = {RequestMethod.GET})
+    public int getCrditByName(String name) {
+        if("计算机编程基础".equals(name)){
+            return 4;
+        }else {
+            return 2;
+        }
+    }
 }
