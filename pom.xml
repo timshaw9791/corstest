@@ -6,8 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.8.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.3.0.RELEASE</version>
     </parent>
     <groupId>cn.wzvtc.softtech</groupId>
     <artifactId>corstest</artifactId>
@@ -21,5 +20,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.197</version>
+            <scope>runtime</scope>
+        </dependency>
+
     </dependencies>
 </project>
