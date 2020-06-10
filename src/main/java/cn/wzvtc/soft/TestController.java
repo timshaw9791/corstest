@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +17,11 @@ import java.util.Map;
 public class TestController {
 
     @RequestMapping(value = "/data.json")
-    public List bookById() {
+    public List bookById(HttpSession httpSession) {
+
+        System.out.println(httpSession.getId());
+        httpSession.invalidate();
+        httpSession.
         List resultList=new ArrayList();
         Map resultMap = new HashMap<>();
         resultMap.put("name", "计算机安装与维护");
