@@ -8,6 +8,8 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
 import org.springframework.session.web.context.AbstractHttpSessionApplicationInitializer;
+import org.springframework.session.web.http.CookieSerializer;
+import org.springframework.session.web.http.DefaultCookieSerializer;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -26,4 +28,12 @@ public class HttpSessionConfig extends AbstractHttpSessionApplicationInitializer
     public PlatformTransactionManager transactionManager(DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
-}
+
+
+    @Bean public CookieSerializer httpSessionIdResolver(){
+        DefaultCookieSerializer cookieSerializer = new DefaultCookieSerializer();                            cookieSerializer.setCookieName("token");
+        cookieSerializer.setUseHttpOnlyCookie(false);
+        cookieSerializer.setSameSite(null);
+        return cookieSerializer;
+
+    }}
