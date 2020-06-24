@@ -60,7 +60,7 @@ public class TestController {
     @RequestMapping(value="/login")
     public boolean login(String password,String username,HttpSession httpSession){
         if("lxf".equals(password) && "2012020045".equals(username)){
-            httpSession.setAttribute("username","username");
+            httpSession.setAttribute("username",username);
             return true;
         }else{
             return false;
