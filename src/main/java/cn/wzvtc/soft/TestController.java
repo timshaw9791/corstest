@@ -1,5 +1,6 @@
 package cn.wzvtc.soft;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -57,9 +58,12 @@ public class TestController {
         }
     }
 
+    @Autowired
+    Dao dao;
+
     @RequestMapping(value="/login")
     public boolean login(String password,String username,HttpSession httpSession){
-        if("lxf".equals(password) && "2012020045".equals(username)){
+        if(dao.checkUser(username,password)){
             httpSession.setAttribute("username",username);
             return true;
         }else{
