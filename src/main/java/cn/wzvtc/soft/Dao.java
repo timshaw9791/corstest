@@ -17,9 +17,9 @@ public class Dao {
     JdbcTemplate jdbcTemplate;
 
     public boolean checkUser(String username,String password) {
-        String sql="select * from student where username='"+username+"' and password='"+password+"'";
-        List list=jdbcTemplate.queryForList(sql);
-        return !list.isEmpty();
+        String sql="select count(*) from student where username='"+username+"' and password='"+password+"'";
+        Integer count=jdbcTemplate.queryForObject(sql,Integer.class);
+        return count>0;
     }
 
     /*
