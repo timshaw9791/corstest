@@ -33,4 +33,9 @@ public class Dao {
 
     }
 
+    public List getCourseList() {
+        String sql="select name,credit from course ";
+        List list=jdbcTemplate.queryForList(sql);
+        return list;
+    }
 }
