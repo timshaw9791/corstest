@@ -20,31 +20,14 @@ public class TestController {
     @RequestMapping(value = "/data.json")
     public List bookById() {
         List resultList=dao.getCourseList();
-        /*List resultList=new ArrayList();
-        Map resultMap = new HashMap<>();
-        resultMap.put("name", "计算机安装与维护");
-        resultMap.put("credit", 2);
-        resultList.add(resultMap);
-
-
-        resultMap = new HashMap<>();
-        resultMap.put("name", "静态网页制作");
-        resultMap.put("credit", 2);
-        resultList.add(resultMap);
-
-        resultMap = new HashMap<>();
-        resultMap.put("name", "计算机编程基础");
-        resultMap.put("credit", 4);
-        resultList.add(resultMap);
-
-        resultMap = new HashMap<>();
-        resultMap.put("name", "大学英语");
-        resultMap.put("credit", 2);
-        resultList.add(resultMap);*/
-
         return resultList;
     }
 
+
+    @RequestMapping(value = "/addCourse")
+    public void addCourse(String name,int credit) {
+        dao.addCourse(name,credit);
+    }
 
     @RequestMapping(value = "/creditByName")
     public int getCrditByName(String name,HttpSession httpSession) {

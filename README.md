@@ -8,7 +8,7 @@
     如果不存在，则在项目中找到schema-h2.sql所在的目录，在你的数据库中运行相应的schema-数据库类型.sql
     SPRING_SESSION 
     SPRING_SESSION_ATTRIBUTES 
-    STUDENT    
+        
 ##  首次运行时进行其他表及数据的初始化 
     手动执行resource/db.sql
     

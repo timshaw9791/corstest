@@ -16,6 +16,12 @@ public class Dao {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    /**
+     * 返回是否存在相应的记录
+     * @param username
+     * @param password
+     * @return
+     */
     public boolean checkUser(String username,String password) {
         String sql="select count(*) from student where username='"+username+"' and password='"+password+"'";
         Integer count=jdbcTemplate.queryForObject(sql,Integer.class);
@@ -34,8 +40,14 @@ public class Dao {
     }
 
     public List getCourseList() {
-        String sql="select * from student ";
+        String sql="select * from COURSE ";
         List list=jdbcTemplate.queryForList(sql);
         return list;
+    }
+
+
+    public void addCourse(String name, int credit) {
+        String sql="insert into course values ('"+name+"',"+credit+")";
+        jdbcTemplate.execute(sql);
     }
 }
