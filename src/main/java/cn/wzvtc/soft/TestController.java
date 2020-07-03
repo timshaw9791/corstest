@@ -19,7 +19,8 @@ public class TestController {
 
     @RequestMapping(value = "/data.json")
     public List bookById() {
-        List resultList=new ArrayList();
+        List resultList=dao.getCourseList();
+        /*List resultList=new ArrayList();
         Map resultMap = new HashMap<>();
         resultMap.put("name", "计算机安装与维护");
         resultMap.put("credit", 2);
@@ -39,7 +40,7 @@ public class TestController {
         resultMap = new HashMap<>();
         resultMap.put("name", "大学英语");
         resultMap.put("credit", 2);
-        resultList.add(resultMap);
+        resultList.add(resultMap);*/
 
         return resultList;
     }
